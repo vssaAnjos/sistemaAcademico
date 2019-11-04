@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * @author Vanessa Pereira dos Anjos
  * @version 1.0
  * @since 2019-10-08 completos: cadastrar,excluir,alterar
+ * Versao com vetor
  */
 public class SistemaAcademico {
 
