@@ -13,11 +13,10 @@ import fatecmc.eletivaJava.sisAcad.dominio.*;
 public class Principal {
 	
 	static SistemaAcademico sa = new SistemaAcademico();
-	static SistemaAcademico2 sa2 = new SistemaAcademico2();
 	
 	public void exibir () {
 		
-		for (Aluno aux : sa2.alunos) {
+		for (Aluno aux : sa.alunos) {
 			if (aux != null) {
 				System.out.println("Aluno: " + aux.getNome() + "\nRA: "
 						+ aux.getRA() + "\nEndereco: " + aux.getEndereco()
@@ -25,7 +24,7 @@ public class Principal {
 						+ aux.getSexo() + "\n-----");
 			}
 		}
-		for (Professor aux : sa2.professores) {
+		for (Professor aux : sa.professores) {
 			if (aux != null) {
 				System.out.println("Professor: " + aux.getNome()
 						+ "\nRegistro: " + aux.getRegistro() + "\nMateria: "
@@ -54,21 +53,9 @@ public class Principal {
 		Professor jose = new Professor(1, "Ms. Jose", "ADM", "rua dos trovoes,3",
 				"912345678", "M");
 		
-		/*
-		sa.cadastrarAluno(aluno);
 		sa.cadastrarAluno(fulana);
 		sa.cadastrarAluno(ciclano);
-		
-		sa.cadastrarProfessor(ana);
-		sa.cadastrarProfessor(jose);
-		sa.cadastrarProfessor(joao);
-		
-		sa.excluirProfessor(ana);
-		
-			*/
-		sa2.cadastrarAluno(fulana);
-		sa2.cadastrarAluno(ciclano);
-		sa2.cadastrarAluno(aluno);
+		sa.cadastrarAluno(aluno);
 		
 	/*	System.out.println("Aluno: " + sa.alunos[0].getNome()
 				+ sa.alunos[0].getRA() + "\nEndereco: " + sa.alunos[0].getEndereco()
