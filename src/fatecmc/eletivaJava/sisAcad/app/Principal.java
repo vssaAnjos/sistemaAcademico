@@ -76,6 +76,7 @@ public class Principal {
 				new Aluno(4321, "Ciclano da silva", "ADS", "rua das rosas,1", "912345678", "M"));
 		
 		 Aluno aux = sa2.pesquisarAluno(4321);
+		 //
 		 aux.exibirAluno(); */
 		 
 	
