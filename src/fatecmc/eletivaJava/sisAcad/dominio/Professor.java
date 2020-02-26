@@ -1,32 +1,48 @@
 package fatecmc.eletivaJava.sisAcad.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
  * @author  Vanessa Pereira dos Anjos
- * @version 1.0
+ * @version 1.2
  * @since   2019-10-08
  * completos: cadastrar,excluir,alterar
  */
-public class Professor {
+public class Professor extends Pessoa{
 	
 	private long registro;
-	private String nome;
-	private String materia;
-	private String endereco;
-	private String telefone;
-	private String sexo;
-	private List<String> disciplinas;
+	private String materia; // trocar por varias disciplinas
+	private List<String> disciplinas = new ArrayList(); // trocar pelo hashMap
+	
 
 	public Professor(long registro, String nome, String materia,
 			String endereco, String telefone, String sexo) {
 		super();
 		this.registro = registro;
-		this.nome = nome;
 		this.materia = materia;
-		this.endereco = endereco;
-		this.telefone = telefone;
-		this.sexo = sexo;
+		setNome(nome);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setSexo(sexo);
+	}
+	public Professor(long registro, String nome, String materia,
+			String endereco, String telefone, String sexo,ArrayList disciplinas) {
+		super();
+		this.registro = registro;
+		this.materia = materia;
+		setNome(nome);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setSexo(sexo);
+		this.disciplinas = disciplinas;
+	}
+
+	public Professor(long registro, String materia, ArrayList<String> disciplinas) {
+		super();
+		this.registro = registro;
+		this.materia = materia;
+		this.disciplinas = disciplinas;
 	}
 
 	public long getRegistro() {
@@ -37,14 +53,6 @@ public class Professor {
 		this.registro = registro;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getMateria() {
 		return materia;
 	}
@@ -53,28 +61,17 @@ public class Professor {
 		this.materia = materia;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public List<String> getDisciplinas() {
+		return disciplinas;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setDisciplinas(List<String> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	@Override
+	public void exibir() {
+		// TODO Auto-generated method stub
+		
 	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
 }

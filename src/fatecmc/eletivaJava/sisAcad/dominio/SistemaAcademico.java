@@ -1,115 +1,122 @@
 package fatecmc.eletivaJava.sisAcad.dominio;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
  * @author Vanessa Pereira dos Anjos
- * @version 1.0
+ * @version 1.2
  * @since 2019-10-08 completos: cadastrar,excluir,alterar
- * features novas:
- * adicionar classe pessoa e extender em aluno e professor
- * adicionar cadastro de disciplina no professor
- * usar iterator para alterar e excluir
+ * feature com Cursos
  */
+enum Cursos {ADS,RH}
+
 public class SistemaAcademico {
 
-	public LinkedList<Aluno> alunos;
-	public LinkedList<Professor> professores;
+	public Aluno alunos[];
+	public Professor professores[];
 	
 	
 	public SistemaAcademico() {
-		alunos = new LinkedList();
-		professores = new LinkedList();
+		alunos = new Aluno[5];
+		professores = new Professor[5];
 	}
 
-	public LinkedList getAlunos() {
+	public Aluno[] getAlunos() {
 		return alunos;
 	}
 
-
-	public void setAlunos(LinkedList alunos) {
+	public void setAlunos(Aluno[] alunos) {
 		this.alunos = alunos;
 	}
 
-
-	public LinkedList getProfessores() {
+	public Professor[] getProfessores() {
 		return professores;
 	}
 
-
-	public void setProfessores(LinkedList professores) {
+	public void setProfessores(Professor[] professores) {
 		this.professores = professores;
 	}
 
-	
+	/**
+	 * 
+	 * @param aluno
+	 *            A ser cadastrado
+	 * @return true para cadastrado com sucesso
+	 */
 	public boolean cadastrarAluno(Aluno aluno) {
-		return alunos.add(aluno);
-	
-	}
-
-	public boolean cadastrarProfessor(Professor professor) {
-		return professores.add(professor);
-	}
-	
-	public boolean excluirAluno(Aluno aluno) {
-		for(int i = 0; i < alunos.size(); i ++ ) {
-			if(alunos.get(i).getRA() == aluno.getRA()) {
-				return alunos.remove(aluno);
-				
+		for (int i = 0; i < alunos.length; i++) {
+			if (alunos[i] == null) {
+				alunos[i] = aluno;
+				return true;
 			}
 		}
 		return false;
 	}
-	
+
+	/**
+	 * 
+	 * @param professor A ser cadastrado
+	 * @return true para cadastro com sucesso
+	 */
+
+	public boolean cadastrarProfessor(Professor professor) {
+		for (int i = 0; i < professores.length; i++) {
+			if (professores[i] == null) {
+				professores[i] = professor;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param aluno A ser excluido 
+	 * @return	true para exclussao com sucesso
+	 */
+	public boolean excluirAluno(Aluno aluno) {
+		for (int i = 0; i < alunos.length; i++) {
+			if (alunos[i] == aluno) {
+				alunos[i] = null;
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * 
+	 * @param professor A ser excluido
+	 * @return	true pra exclussao com sucesso
+	 */
 	public boolean excluirProfessor(Professor professor) {
-		for(int i = 0; i < professores.size(); i ++ ) {
-			if(professores.get(i).getRegistro() == professor.getRegistro() ) {
-				return professores.remove(professor);
+		for (int i = 0; i < professores.length; i++) {
+			if (professores[i] == professor) {
+				professores[i] = null;
+				return true;
 			}
 		}
 		return false;
 	}
 
 	public void alterarAluno(Aluno aluno, Aluno novoAluno) {
-		for(int i = 0; i < alunos.size(); i ++ ) {
-			if(alunos.get(i).getRA() == aluno.getRA()) {
-				alunos.remove(aluno);
-				alunos.add(novoAluno);
+		for (int i = 0; i < alunos.length; i++) {
+			if (alunos[i] == aluno) {
+				alunos[i] = novoAluno;
 			}
 		}
 	}
 
-	public void alterarProfessor(Professor professor, Professor novoProfessor) {
-		for(int i = 0; i < professores.size(); i ++ ) {
-			if(professores.get(i).getRegistro() == professor.getRegistro()) {
-				professores.remove(professor);
-				professores.add(novoProfessor);
-			}
-		}
+	public void alterarProfessor(Professor professor) {
+
 	}
 
 	public Aluno pesquisarAluno(long ra) {
-		for (Aluno aux : alunos) {
-			if(aux.getRA() == ra) {
-				return aux;
-			} 
-		}
-		System.out.println("Aluno nao encontrado");
 		return null;
 	}
 
 	public Professor pesquisarProfessor(long registro) {
-		for (Professor aux : professores) {
-			if(aux.getRegistro() == registro) {
-				return aux;
-			} 
-		}
-		System.out.println("Professor nao encontrado");
 		return null;
 	}
 
-	public boolean cadastrarAlunoLista(Aluno aluno) {
-		alunos.add(aluno);
-		return true;
-	}
 }
